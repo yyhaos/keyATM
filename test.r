@@ -18,10 +18,7 @@ save(dfm_mat, file = "dfm_mat.rda")
 keyATM_docs <- keyATM_read(bills_dfm)
 
 print(keyATM_docs)
-library(jsonlite)
-write_json(keyATM_docs, "keyATM_docs_r.json", pretty = TRUE, auto_unbox = TRUE)
 
-stop("1")
 # keyATM Base
 out <- keyATM(docs = keyATM_docs, model = "base",no_keyword_topics = 5, keywords = bills_keywords)
 topWords = top_words(out)
