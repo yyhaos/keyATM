@@ -67,12 +67,16 @@ keyATM_read <- function(texts, encoding = "UTF-8", check = TRUE, keep_docnames =
   docnames <- NULL
   W_read <- list(W_raw = list(), W_split = list())
   if (!is.null(text_dfm)) {
+    print("1111")
     vocabulary <- colnames(text_dfm)
+    print(dim(text_dfm))
+
     W_read <- read_dfm_cpp(text_dfm, W_read, vocabulary, split)
     if (keep_docnames) {
       docnames <- quanteda::docnames(text_dfm)
     }
   } else {
+    print("2222")
     # Preprocess each text
     # Use files <- list.files(doc_folder, pattern = "txt", full.names = TRUE) when you pass
     if (is.null(text_df)) {

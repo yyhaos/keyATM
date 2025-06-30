@@ -32,6 +32,7 @@ List read_dfm_cpp(Eigen::SparseMatrix<int> dfm,
 {
   dfm = dfm.transpose();  // SparseMatrix is colmajor
   int doc_num = dfm.cols();
+  printf("doc_num: %d\n", doc_num);
   string word_id;
   int count;
   double u;
