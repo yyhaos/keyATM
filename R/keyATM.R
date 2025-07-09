@@ -101,8 +101,8 @@ keyATM <- function(docs, model, no_keyword_topics,
     )
     library(jsonlite)
     write_json(initialized, "keyATM_docs_r.json", pretty = TRUE, auto_unbox = TRUE)
-    stop("1")
     fitted <- keyATM_fit(initialized)
+    stop("1")
     used_iter <- get_used_iter(fitted, resume)
   }
 

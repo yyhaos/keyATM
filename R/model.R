@@ -468,11 +468,6 @@ keyATM_fit <- function(keyATM_initialized, resume = FALSE)
     set.seed(key_model$options$seed)
     cli::cli_progress_step("Fitting the model: {iterations} iteration{?s}", spinner = TRUE)
   }
-  library(jsonlite)
-  key_model$call <- NULL
-  write_json(key_model, "keyATM_docs_r.json", pretty = TRUE, auto_unbox = TRUE)
-
-  stop("1")
 
   if (model_name == "base") {
     key_model <- keyATM_fit_base(key_model, resume = resume)
