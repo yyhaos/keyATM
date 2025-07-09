@@ -374,13 +374,12 @@ keyATM_initialize <- function(docs, model, no_keyword_topics,
   } else {
     W <- lapply(docs$W_raw, function(x) { myhashmap_getvec(info$wd_map, x) })
   }
-
   # Check keywords
   keywords <- check_keywords(info$wd_names, keywords, options$prune)
 
   keywords_raw <- keywords  # keep raw keywords (not word_id)
   keywords_id <- lapply(keywords, function(x) { myhashmap_getvec(info$wd_map, x) })
-  info$keywords_id <- unlist(keywords_id, use.names = FALSE, recursive = FALSE)
+
 
   # Assign S and Z
   if (model %in% info$models_keyATM) {
