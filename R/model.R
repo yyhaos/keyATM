@@ -379,6 +379,7 @@ keyATM_initialize <- function(docs, model, no_keyword_topics,
 
   keywords_raw <- keywords  # keep raw keywords (not word_id)
   keywords_id <- lapply(keywords, function(x) { myhashmap_getvec(info$wd_map, x) })
+  info$keywords_id <- unlist(keywords_id, use.names = FALSE, recursive = FALSE)
 
 
   # Assign S and Z
@@ -440,7 +441,7 @@ keyATM_initialize <- function(docs, model, no_keyword_topics,
     keyword_k = length(keywords_raw),
     vocab = info$wd_names,
     model_settings = model_settings, priors = priors, options = options,
-    stored_values = stored_values, model_fit = list(), call = match.call()
+    stored_values = stored_values, model_fit = list(), call = "match.call()"
   )
 
   rm(info)
