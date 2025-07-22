@@ -99,11 +99,20 @@ keyATM <- function(docs, model, no_keyword_topics,
       docs, model_name, no_keyword_topics,
       keywords, model_settings, priors, options
     )
+    # fitted <- keyATM_fit(initialized)
+    if (file.exists("keyATM_fit.rds")) {
+      message("Reading cached RDS model output...")
+      fitted <- readRDS("keyATM_fit.rds")
+      resume <- FALSE
+    } else {
+      fitted <- keyATM_fit(initialized)
+      saveRDS(fitted, "keyATM_fit.rds")
+      resume <- FALSE
+    }
     library(jsonlite)
-    write_json(initialized, "keyATM_docs_r.json", pretty = TRUE, auto_unbox = TRUE)
-    fitted <- keyATM_fit(initialized)
-    stop("1")
+    write_json(fitted, "keyATM_fit_r.json", pretty = TRUE, auto_unbox = TRUE)
     used_iter <- get_used_iter(fitted, resume)
+
   }
 
   if ("resume" %in% names(options)) {  # first save or update
@@ -115,7 +124,6 @@ keyATM <- function(docs, model, no_keyword_topics,
     cli::cli_alert_info("`options$iterations` is 0. keyATM returns an initialized object.")
     return(fitted)
   }
-
   # Get output
   out <- keyATM_output(fitted, keep, used_iter)
 
