@@ -33,3 +33,4 @@ vignettes_old/*.pdf
 *.knit.md
 .Rproj.user
 inst/doc
+*.rds
