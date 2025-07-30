@@ -24,10 +24,14 @@ keyATM_docs <- keyATM_read(bills_dfm)
 # stop("1")
 # keyATM Base
 out <- keyATM(docs = keyATM_docs, model = "base",no_keyword_topics = 5, keywords = bills_keywords)
+library(jsonlite)
+write_json(out, "keyATM_out_r.json", pretty = TRUE, auto_unbox = TRUE)
 topWords = top_words(out)
 
+writeLines(apply(topWords, 1, paste, collapse = "\t"), "keyATM_topWords_r.txt")
 
-# print(topWords)
+print(topWords)
+
 #      1_Education        2_Law     3_Health      4_Drug      Other_1
 # 1  education [✓]      law [✓]   health [✓]    drug [✓]   management
 # 2         school       action   public [✓]      person     wildlife

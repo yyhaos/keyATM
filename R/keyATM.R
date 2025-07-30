@@ -112,9 +112,8 @@ keyATM <- function(docs, model, no_keyword_topics,
     library(jsonlite)
     write_json(fitted, "keyATM_fit_r.json", pretty = TRUE, auto_unbox = TRUE)
     used_iter <- get_used_iter(fitted, resume)
-
   }
-
+  print(options)
   if ("resume" %in% names(options)) {  # first save or update
     fitted_save(options$resume, fitted, model_name, used_iter)
   }

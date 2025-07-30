@@ -456,7 +456,6 @@ keyATM_fit <- function(keyATM_initialized, resume = FALSE)
 {
   if (! ("keyATM_initialized" %in% class(keyATM_initialized) | "keyATM_resume" %in% class(keyATM_initialized)))
     cli::cli_abort("The input is not an initialized object.")
-
   key_model <- keyATM_initialized$model
   model_name <- keyATM_initialized$model_name
   iterations <- key_model$options$iter_new

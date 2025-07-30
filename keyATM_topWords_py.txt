@@ -1,0 +1,10 @@
+education[✓]	law[✓]	public[✓]	drug[✓]	report	term	report	information	term
+student[✓]	court[✓]	health[✓]	follow	term	report	term	congress	purpose
+child[✓]	attorney[✓]	report	report	follow	follow	national	national	information
+term	term	term	term	national	date	follow	term	describe
+grant	date	information	describe	congress	information	congress	report	follow
+report	follow	date	national	grant	congress	information	describe	national
+purpose	national	describe	appropriate	purpose	national	subparagraph	follow	report
+follow	report	purpose	date	date	purpose	grant	subparagraph	grant
+research	subparagraph	national	congress	appropriate	action	purpose	grant	subparagraph
+date	purpose	congress	purpose	information	receive	appropriate	date	date
