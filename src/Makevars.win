@@ -1,0 +1,3 @@
+# src/Makevars.win
+CXXFLAGS = -O3 -Wall -DNDEBUG -mfpmath=sse -msse2 -mstackrealign -Wno-ignored-attributes
+CXX11FLAGS = -O3 -Wall -DNDEBUG -mfpmath=sse -msse2 -mstackrealign -Wno-ignored-attributes

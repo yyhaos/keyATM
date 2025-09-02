@@ -1,11 +1,10 @@
+
+
 unloadNamespace("keyATM")
 rm(list = ls())
 devtools::load_all("./")
 
 library(quanteda)
-
-# 140 pieces of 1000 words long congress text
-data(keyATM_data_bills)
 
 data(keyATM_data_bills)
 bills_keywords <- keyATM_data_bills$keywords

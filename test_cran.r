@@ -7,7 +7,7 @@ bills_keywords <- keyATM_data_bills$keywords
 bills_dfm <- keyATM_data_bills$doc_dfm
 keyATM_docs <- keyATM_read(bills_dfm)
 
-for (i in 1:1) {
+for (i in 1:5) {
   out <- keyATM(
     docs = keyATM_docs,
     model = "base",
@@ -18,7 +18,7 @@ for (i in 1:1) {
   theta <- out$theta
   write_json(theta, paste0("theta_", i, ".json"), pretty = TRUE, auto_unbox = TRUE)
 
-  plot_topicprop(out, show_topic = 1:5)
+  topWords = top_words(out)
 
-  print(plot_topicprop(out, show_topic = 1:5))
+  writeLines(apply(topWords, 1, paste, collapse = "\t"), paste0("keyATM_topWords_r_", i, ".txt"))
 }

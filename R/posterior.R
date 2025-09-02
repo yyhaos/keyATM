@@ -664,6 +664,24 @@ top_words_calc <- function(n, measure, show_keyword,
      }
   }
   res <- apply(phi, 1, measuref)
+  library(jsonlite)
+  # 确保 word_counts 是 numeric 向量，colnames(phi) 是字符向量
+  vocab <- colnames(phi)
+  counts <- as.integer(word_counts)
+
+  # 构造 named list（不是命名向量！）
+  wordcount_list <- as.list(counts)
+  names(wordcount_list) <- vocab
+
+  # 假设 phi 是 fitted$phi
+  phi_rounded <- round(phi, 4)  # 保留4位小数
+
+  # 转换为 data.frame，添加行名
+  phi_df <- as.data.frame(phi_rounded)
+  rownames(phi_df) <- paste0("Topic_", seq_len(nrow(phi_df)))
+
+  # 写入 CSV（保留列名和行名）
+  write.csv(phi_df, file = "phi_r.csv", row.names = TRUE)
 
   if (show_keyword) {
     for (i in 1:ncol(res)) {
