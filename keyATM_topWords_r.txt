@@ -1,10 +1,10 @@
-education [✓]	law [✓]	health [✓]	report	commission	research	wildlife	facility	veteran
-school	court [✓]	public [✓]	drug [✓]	security	national	land	report	date
-educational	action	care	information	electronic	director	conservation	standard	code
-student [✓]	code	subparagraph	congress	rule	grant	fish	system	one
-local	person	amendment	person	communication	center	refuge	project	follow
-library	term	medical	date	information	technology	organ	assistance	department
-child [✓]	district	end	application	term	activity	management	new	chapter
-eligible	crime	stat	submit	mail	public [3]	commission	require	new
-part	enforcement	page	receive	entity	carry	rare	later	duty
-describe	civil	describe	day	day	development	waste	management	thereof
+education [✓]	law [✓]	health [✓]	drug [✓]	commission	congress	management	research	public [3]
+school	court [✓]	care	control	term	house	water	director	wildlife
+educational	action	subparagraph	person	party	senate	coastal	project	system
+student [✓]	code	follow	application	facility	require	administrator	national	national
+grant	person	amendment	information	mean	representative	air	center	facility
+local	district	respect	report	museum	information	resource	technology	conservation
+library	enforcement	veteran	substance	member	security	national	activity	chapter
+eligible	crime	period	submit	action	refer	zone	establish	refuge
+child [✓]	civil	public [✓]	abuse	waste	report	land	appropriate	land
+describe	follow	individual	describe	corporation	government	environmental	carry	fish

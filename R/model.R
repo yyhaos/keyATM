@@ -1058,6 +1058,22 @@ make_sz_key <- function(W, keywords, info)
     Z <- lapply(W, make_z, topicvec)
   }
 
+  # make keyATM_zz_r.json
+  # make keyATM_zz_r.json
+  # Z_json <- lapply(Z, function(v) unname(as.integer(v)))
+  # If you need zero-based indexing for Python/C++:
+  # Z_json <- lapply(Z_json, function(v) v - 1L)
+
+  # jsonlite::write_json(
+  #   list(Z = Z_json),
+  #   path = "keyATM_zz_r.json",
+  #   pretty = TRUE,
+  #   auto_unbox = FALSE,
+  #   digits = NA
+  # )
+  zz <- jsonlite::fromJSON("keyATM_zz_r.json", simplifyVector = FALSE)
+  Z <- lapply(zz$Z, as.integer)
+
   return(list(S = S, Z = Z))
 }
 
