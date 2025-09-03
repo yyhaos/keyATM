@@ -41,6 +41,7 @@ using namespace std;
 // [[Rcpp::export]]
 List keyATM_fit_base(List model, bool resume = false)
 {
+  TRACE_FUNC();
   keyATMbase keyATMbase_model(model);
   if (resume) {
     keyATMbase_model.resume_fit();
@@ -50,7 +51,6 @@ List keyATM_fit_base(List model, bool resume = false)
   model = keyATMbase_model.return_model();
   return model;
 }
-
 
 //' Run the Collapsed Gibbs sampler for the keyATM covariates (Dir-Multi)
 //'

@@ -7,6 +7,7 @@ using namespace std;
 
 void keyATMbase::initialize_specific()
 {
+  TRACE_FUNC();
   nv_alpha = priors_list["alpha"];
   alpha = Rcpp::as<Eigen::VectorXd>(nv_alpha);
 
@@ -17,7 +18,6 @@ void keyATMbase::initialize_specific()
     store_alpha = 1;
   }
 }
-
 
 void keyATMbase::resume_initialize_specific()
 {
@@ -34,9 +34,29 @@ void keyATMbase::resume_initialize_specific()
   }
 }
 
+// add here
+#include <Rcpp.h>
+using Rcpp::IntegerVector;
+
+static inline void rprint_iv(const char *name, const IntegerVector &v, int max_elems = 20)
+{
+  const int n = v.size();
+  const int lim = (n < max_elems) ? n : max_elems;
+  Rprintf("%s (len=%d) [", name, n);
+  for (int i = 0; i < lim; ++i)
+  {
+    if (i)
+      Rprintf(", ");
+    Rprintf("%d", v[i]);
+  }
+  if (n > lim)
+    Rprintf(", ...");
+  Rprintf("]\n");
+}
 
 void keyATMbase::iteration_single(int it)
 { // Single iteration
+  TRACE_FUNC();
   int doc_id_;
   int doc_length;
   int w_, z_, s_;
@@ -46,9 +66,16 @@ void keyATMbase::iteration_single(int it)
   doc_indexes = sampler::shuffled_indexes(num_doc); // shuffle
 
   for (int ii = 0; ii < num_doc; ++ii) {
-    doc_id_ = doc_indexes[ii];
+    // doc_id_ = doc_indexes[ii];
+    doc_id_ = ii;
     doc_s = S[doc_id_], doc_z = Z[doc_id_], doc_w = W[doc_id_];
     doc_length = doc_each_len[doc_id_];
+
+    // add here
+    // Rprintf("it=%d  ii=%d  doc_id_=%d  doc_length=%d\n", it, ii, doc_id_, doc_length);
+    // rprint_iv("S", doc_s);
+    // rprint_iv("Z", doc_z);
+    // rprint_iv("W", doc_w);
 
     token_indexes = sampler::shuffled_indexes(doc_length); //shuffle
 
@@ -59,7 +86,14 @@ void keyATMbase::iteration_single(int it)
 
       new_z = sample_z(alpha, z_, s_, w_, doc_id_);
       doc_z[w_position] = new_z;
-
+      // if(jj < 5)
+      // {
+      //   printf("WWW: ii%d jj%d, w_%d new_z%d a%d\n", ii, jj, w_, new_z, keywords[new_z].find(w_) == keywords[new_z].end());
+      // } else {
+      //   while(1) {
+      //     printf("");
+      //   }
+      // }
       if (keywords[new_z].find(w_) == keywords[new_z].end())
         continue;
 
@@ -73,10 +107,15 @@ void keyATMbase::iteration_single(int it)
   }
   sample_parameters(it);
 
+  // while (1)
+  // {
+  //   printf("");
+  // }
 }
 
 void keyATMbase::sample_parameters(int it)
 {
+  TRACE_FUNC();
   if (estimate_alpha)
     sample_alpha();
 
@@ -92,9 +131,9 @@ void keyATMbase::sample_parameters(int it)
   }
 }
 
-
 void keyATMbase::sample_alpha()
 {
+  TRACE_FUNC();
 
   double start, end, previous_p, new_p, newlikelihood, slice_;
   keep_current_param = alpha;
@@ -134,9 +173,9 @@ void keyATMbase::sample_alpha()
   }
 }
 
-
 double keyATMbase::alpha_loglik(int k)
 {
+  TRACE_FUNC();
   double loglik = 0.0;
   double fixed_part = 0.0;
 
@@ -166,9 +205,9 @@ double keyATMbase::alpha_loglik(int k)
   return loglik;
 }
 
-
 double keyATMbase::loglik_total()
 {
+  TRACE_FUNC();
   double loglik = 0.0;
   double fixed_part = 0.0;
 
@@ -211,5 +250,3 @@ double keyATMbase::loglik_total()
 
   return loglik;
 }
-
-

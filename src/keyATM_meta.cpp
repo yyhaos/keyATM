@@ -21,12 +21,12 @@ keyATMmeta::~keyATMmeta()
 
 void keyATMmeta::fit()
 {
+  TRACE_FUNC();
   // Read data, initialize the model and fit the model
   read_data();
   initialize();
   iteration();
 }
-
 
 void keyATMmeta::resume_fit()
 {
@@ -39,15 +39,16 @@ void keyATMmeta::resume_fit()
 
 void keyATMmeta::read_data()
 {
+  TRACE_FUNC();
   // `common` reads data required in all models
   // `specific` reads model specific data
   read_data_common();
   read_data_specific();
 }
 
-
 void keyATMmeta::read_data_common()
 {
+  TRACE_FUNC();
   // Read data
   W = model["W"]; Z = model["Z"]; S = model["S"];
   vocab = model["vocab"];
@@ -101,18 +102,18 @@ void keyATMmeta::read_data_common()
   max_v = shrinkp(max_v);
 }
 
-
 void keyATMmeta::initialize()
 {
+  TRACE_FUNC();
   // `common`: common initialization
   // `specific`: model specific initialization
   initialize_common();
   initialize_specific();
 }
 
-
 void keyATMmeta::initialize_common()
 {
+  TRACE_FUNC();
   // Prior values are set in `keyATMmeta::read_data_common()`
 
   // Slice sampling initialization for alpha
@@ -242,9 +243,7 @@ void keyATMmeta::initialize_common()
   for (int k = 0; k < num_topics; ++k) {
     Lbeta_sk(k) = (double)keywords_num[k] * beta_s;
   }
-
 }
-
 
 void keyATMmeta::weights_invfreq()
 {
@@ -295,6 +294,7 @@ void keyATMmeta::resume_initialize()
 
 void keyATMmeta::iteration()
 {
+  TRACE_FUNC();
   // Calculation thte number of iterations
   iter = options_list["iterations"];  // total number of iterations after this fitting, defined at the class level
   int iter_new = options_list["iter_new"];  // how many iterations to add
@@ -334,9 +334,9 @@ void keyATMmeta::iteration()
   model["model_fit"] = model_fit;
 }
 
-
 void keyATMmeta::sampling_store(int r_index)
 {
+  TRACE_FUNC();
   // Store likelihood and perplexity during the sampling
 
   double loglik;
@@ -359,9 +359,9 @@ void keyATMmeta::sampling_store(int r_index)
   }
 }
 
-
 void keyATMmeta::parameters_store(int r_index)
 {
+  TRACE_FUNC();
   if (store_theta)
     store_theta_iter(r_index);
 
@@ -369,18 +369,18 @@ void keyATMmeta::parameters_store(int r_index)
     store_pi_iter(r_index);
 }
 
-
 void keyATMmeta::store_theta_iter(int r_index)
 {
+  TRACE_FUNC();
   Z_tables = stored_values["Z_tables"];
   NumericMatrix Z_table = Rcpp::wrap(n_dk_noWeight);
   Z_tables.push_back(Z_table);
   stored_values["Z_tables"] = Z_tables;
 }
 
-
 void keyATMmeta::store_pi_iter(int r_index)
 {
+  TRACE_FUNC();
   List pi_vectors = stored_values["pi_vectors"];
   // calculate
   VectorXd numer = n_s1_k.array() + prior_gamma.col(0).array();
@@ -392,7 +392,6 @@ void keyATMmeta::store_pi_iter(int r_index)
   pi_vectors.push_back(pi_vector);
   stored_values["pi_vectors"] = pi_vectors;
 }
-
 
 void keyATMmeta::verbose_special(int r_index)
 {
@@ -406,6 +405,7 @@ void keyATMmeta::verbose_special(int r_index)
 int keyATMmeta::sample_z(VectorXd &alpha, int z, int s,
                          int w, int doc_id)
 {
+  TRACE_FUNC();
   int new_z;
   double numerator, denominator;
   double sum;
@@ -478,9 +478,9 @@ int keyATMmeta::sample_z(VectorXd &alpha, int z, int s,
   return new_z;
 }
 
-
 int keyATMmeta::sample_s(int z, int s, int w, int doc_id)
 {
+  TRACE_FUNC();
   int new_s;
   double numerator, denominator;
   double s0_prob;
@@ -527,7 +527,6 @@ int keyATMmeta::sample_s(int z, int s, int w, int doc_id)
 
   return new_s;
 }
-
 
 // Utilities
 //
@@ -584,6 +583,7 @@ double keyATMmeta::gammaln_frac(const double value, const int count)
 
 List keyATMmeta::return_model()
 {
+  TRACE_FUNC();
   // Return output to R
   return model;
 }
