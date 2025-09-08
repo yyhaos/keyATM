@@ -1,10 +1,10 @@
-education [✓]	law [✓]	health [✓]	drug [✓]	commission	congress	management	research	public [3]
-school	court [✓]	care	control	term	house	water	director	wildlife
-educational	action	subparagraph	person	party	senate	coastal	project	system
-student [✓]	code	follow	application	facility	require	administrator	national	national
-grant	person	amendment	information	mean	representative	air	center	facility
-local	district	respect	report	museum	information	resource	technology	conservation
-library	enforcement	veteran	substance	member	security	national	activity	chapter
-eligible	crime	period	submit	action	refer	zone	establish	refuge
-child [✓]	civil	public [✓]	abuse	waste	report	land	appropriate	land
-describe	follow	individual	describe	corporation	government	environmental	carry	fish
+education [✓]	law [✓]	public [✓]	drug [✓]	information	date	national	follow	research
+school	court [✓]	health [✓]	grant	commission	subparagraph	library	report	technology
+educational	action	care	control	electronic	describe	wildlife	congress	national
+student [✓]	person	medical	administrator	security	facility	land	house	center
+local	code	purpose	water	rule	provision	management	end	establish
+eligible	district	report	project	communication	determine	board	senate	development
+grant	crime	air	application	enforcement	except	member	representative	standard
+child [✓]	civil	human	community	access	apply	coastal	appropriate	director
+describe	term	network	local	issue	effective	purpose	committee	activity
+high	attorney [✓]	patient	activity	require	regulation	resource	government	science

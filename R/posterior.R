@@ -63,6 +63,8 @@ keyATM_output <- function(model, keep, used_iter)
   modelfit <- NULL
   if (length(model$model_fit) > 0) {
     names(model$model_fit) <- 1:length(model$model_fit)
+    print(length(model$model_fit)) # 打印 list 有多少元素
+    
     model$model_fit %>%
       dplyr::bind_rows() %>%
       t() %>%

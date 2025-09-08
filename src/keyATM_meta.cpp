@@ -46,6 +46,35 @@ void keyATMmeta::read_data()
   read_data_specific();
 }
 
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// 打印 List< IntegerVector >，带 names
+static inline void print_kw_list(const List &kw, const char *title = "keywords")
+{
+  CharacterVector nms = kw.names();
+  Rprintf("%s size = %d\n", title, kw.size());
+  for (int i = 0; i < kw.size(); ++i)
+  {
+    IntegerVector v = kw[i]; // 强制视作整型向量
+    std::string name = (nms.size() > i && nms[i] != NA_STRING) ? as<std::string>(nms[i]) : "";
+    Rprintf("  [%d]%s%s len=%d: ", i,
+            name.empty() ? "" : " ",
+            name.empty() ? "" : name.c_str(),
+            v.size());
+    int lim = std::min<int>(v.size(), 20); // 只打印前20个
+    for (int j = 0; j < lim; ++j)
+    {
+      if (j)
+        Rprintf(", ");
+      Rprintf("%d", v[j]);
+    }
+    if (v.size() > lim)
+      Rprintf(", ...");
+    Rprintf("\n");
+  }
+}
+
 void keyATMmeta::read_data_common()
 {
   TRACE_FUNC();
@@ -53,7 +82,9 @@ void keyATMmeta::read_data_common()
   W = model["W"]; Z = model["Z"]; S = model["S"];
   vocab = model["vocab"];
   regular_k = model["no_keyword_topics"];
-  keywords_list = model["keywords"];
+  // 读取
+  keywords_list = model["keywords"]; // 你原来的代码
+
   keyword_k = model["keyword_k"];
   model_fit = model["model_fit"];
 

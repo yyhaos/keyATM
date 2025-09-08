@@ -22,7 +22,9 @@ keyATM_docs <- keyATM_read(bills_dfm)
 
 # stop("1")
 # keyATM Base
-out <- keyATM(docs = keyATM_docs, model = "base",no_keyword_topics = 5, keywords = bills_keywords)
+options = {}
+options$iterations = 3
+out <- keyATM(docs = keyATM_docs, model = "base", no_keyword_topics = 5, keywords = bills_keywords, options = options)
 library(jsonlite)
 write_json(out, "keyATM_out_r.json", pretty = TRUE, auto_unbox = TRUE)
 topWords = top_words(out)
