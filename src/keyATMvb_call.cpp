@@ -25,7 +25,7 @@ using namespace std;
 // [[Rcpp::export]]
 List keyATMvb_call(List model)
 {
-  keyATMvb keyATMvb_model(model);
+  keyATMvb keyATMvb_model(model); 
   keyATMvb_model.fit();
   model = keyATMvb_model.return_model();
   return model;

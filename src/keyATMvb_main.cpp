@@ -770,7 +770,7 @@ List keyATMvb::return_model()
 {
   // Return output to R
   get_QOI();
-
+  printf("inin keyATMvb::return_model()\n");
   // Organize values
   model["options"] = options_list;
   model["vb_options"] = vb_options;

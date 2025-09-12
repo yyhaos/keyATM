@@ -23,7 +23,7 @@ keyATM_docs <- keyATM_read(bills_dfm)
 # stop("1")
 # keyATM Base
 options = {}
-options$iterations = 1
+options$iterations = 5
 options$seed = 12223
 out <- keyATM(docs = keyATM_docs, model = "base", no_keyword_topics = 5, keywords = bills_keywords, options = options)
 library(jsonlite)

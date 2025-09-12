@@ -1,10 +1,10 @@
-education [✓]	law [✓]	public [✓]	drug [✓]	describe	follow	report	appropriate	term
-student [✓]	court [✓]	health [✓]	date	follow	report	appropriate	report	follow
-child [✓]	attorney [✓]	purpose	term	national	congress	date	information	information
-local	term	care	information	report	date	term	national	action
-subparagraph	congress	senate	school	director	information	end	term	report
-grant	purpose	grant	report	activity	provision	national	code	purpose
-information	report	person	representative	congress	term	require	receive	activity
-school	national	subparagraph	period	research	describe	carry	congress	code
-national	amendment	congress	describe	term	house	authorize	center	require
-report	follow	term	person	library	grant	grant	determine	national
+education [✓]	law [✓]	public [✓]	drug [✓]	national	security	center	information	facility
+school	court [✓]	health [✓]	person	technology	system	research	report	commission
+educational	code	care	date	library	research	cost	project	report
+local	action	subparagraph	part	land	area	committee	appropriate	electronic
+student [✓]	district	purpose	relate	director	necessary	network	communication	require
+grant	person	control	application	term	purpose	air	new	upon
+eligible	enforcement	wildlife	abuse	party	establish	information	rare	term
+child [✓]	attorney [✓]	veteran	treatment	management	member	congress	congress	national
+describe	amendment	respect	crime	follow	authorize	appropriate	national	office
+high	term	add	follow	museum	perform	end	organ	issue
