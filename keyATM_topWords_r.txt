@@ -1,0 +1,10 @@
+education [✓]	law [✓]	health [✓]	drug [✓]	care	research	project	commission	wildlife
+school	court [✓]	public [✓]	control	determine	national	assistance	action	national
+educational	code	senate	person	apply	director	management	district	land
+student [✓]	enforcement	follow	application	subparagraph	activity	coastal	party	water
+local	person	congress	describe	relate	center	administrator	rule	system
+library	crime	end	information	provision	establish	air	report	fish
+eligible	term	report	date	date	technology	congress	communication	public [3]
+grant	civil	add	issue	payment	information	quality	congress	refuge
+child [✓]	attorney [✓]	veteran	submit	describe	standard	mean	property	management
+high	relate	house	subparagraph	term	grant	authorize	claim	resource
