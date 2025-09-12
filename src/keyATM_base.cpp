@@ -79,26 +79,26 @@ void keyATMbase::iteration_single(int it)
 
     token_indexes = sampler::shuffled_indexes(doc_length); //shuffle
 
-    Rcpp::List Zz = model["Z"];     // Z 是一个 list
-    Rcpp::IntegerVector Z0 = Zz[0]; // 取第 1 个文档
-    printf("during1 iteration_single model Z[0] %d %d %d\n",
-           Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+    // Rcpp::List Zz = model["Z"];     // Z 是一个 list
+    // Rcpp::IntegerVector Z0 = Zz[0]; // 取第 1 个文档
+    // printf("during1 iteration_single model Z[0] %d %d %d\n",
+    //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
 
     // Iterate each word in the document
     for (int jj = 0; jj < doc_length; ++jj) {
       w_position = token_indexes[jj];
       s_ = doc_s[w_position], z_ = doc_z[w_position], w_ = doc_w[w_position];
 
-      Rcpp::List Zz = model["Z"];     // Z 是一个 list
-      Rcpp::IntegerVector Z0 = Zz[0]; // 取第 1 个文档
-      printf("during11 iteration_single model Z[0] %d %d %d\n",
-             Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+      // Rcpp::List Zz = model["Z"];     // Z 是一个 list
+      // Rcpp::IntegerVector Z0 = Zz[0]; // 取第 1 个文档
+      // printf("during11 iteration_single model Z[0] %d %d %d\n",
+      //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
       new_z = sample_z(alpha, z_, s_, w_, doc_id_);
 
-      Zz = model["Z"];     // Z 是一个 list
-      Z0 = Zz[0]; // 取第 1 个文档
-      printf("during12 iteration_single model Z[0] %d %d %d\n",
-             Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+      // Zz = model["Z"];     // Z 是一个 list
+      // Z0 = Zz[0]; // 取第 1 个文档
+      // printf("during12 iteration_single model Z[0] %d %d %d\n",
+      //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
       doc_z[w_position] = new_z;
       // if(jj < 5)
       // {
@@ -115,10 +115,10 @@ void keyATMbase::iteration_single(int it)
       new_s = sample_s(z_, s_, w_, doc_id_);
       doc_s[w_position] = new_s;
 
-      Zz = model["Z"]; // Z 是一个 list
-      Z0 = Zz[0];      // 取第 1 个文档
-      printf("during13 iteration_single model Z[0] %d %d %d\n",
-             Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+      // Zz = model["Z"]; // Z 是一个 list
+      // Z0 = Zz[0];      // 取第 1 个文档
+      // printf("during13 iteration_single model Z[0] %d %d %d\n",
+      //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
 
       checkUserInterrupt();
     }
@@ -127,25 +127,25 @@ void keyATMbase::iteration_single(int it)
     S[doc_id_] = doc_s;
 
     // Check keybord interruption to cancel the iteration
-    Zz = model["Z"];     // Z 是一个 list
-    Z0 = Zz[0]; // 取第 1 个文档
-    printf("during2 iteration_single model Z[0] %d %d %d\n",
-           Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+    // Zz = model["Z"];     // Z 是一个 list
+    // Z0 = Zz[0]; // 取第 1 个文档
+    // printf("during2 iteration_single model Z[0] %d %d %d\n",
+    //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
   }
 
   // Check keybord interruption to cancel the iteration
-  Rcpp::List Zz = model["Z"];     // Z 是一个 list
-  Rcpp::IntegerVector Z0 = Zz[0]; // 取第 1 个文档
-  printf("after iteration_single model Z[0] %d %d %d\n",
-         Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+  // Rcpp::List Zz = model["Z"];     // Z 是一个 list
+  // Rcpp::IntegerVector Z0 = Zz[0]; // 取第 1 个文档
+  // printf("after iteration_single model Z[0] %d %d %d\n",
+  //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
 
   sample_parameters(it);
 
   // Check keybord interruption to cancel the iteration
-  Zz = model["Z"];     // Z 是一个 list
-  Z0 = Z[0]; // 取第 1 个文档
-  printf("after2 iteration_single model Z[0] %d %d %d\n",
-         Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+  // Zz = model["Z"];     // Z 是一个 list
+  // Z0 = Z[0]; // 取第 1 个文档
+  // printf("after2 iteration_single model Z[0] %d %d %d\n",
+  //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
 
   // while (1)
   // {

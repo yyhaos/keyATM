@@ -355,23 +355,23 @@ void keyATMmeta::iteration()
     }
 
     // Check keybord interruption to cancel the iteration
-    Rcpp::List Z = model["Z"];     // Z 是一个 list
-    Rcpp::IntegerVector Z0 = Z[0]; // 取第 1 个文档
-    printf("iteration model Z[0] %d %d %d\n",
-           Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+    // Rcpp::List Z = model["Z"];     // Z 是一个 list
+    // Rcpp::IntegerVector Z0 = Z[0]; // 取第 1 个文档
+    // printf("iteration model Z[0] %d %d %d\n",
+    //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
 
-    printf("thinning %d llk_per %d iter_start %d iter %d \n", thinning, llk_per, iter_start, iter);
+    // printf("thinning %d llk_per %d iter_start %d iter %d \n", thinning, llk_per, iter_start, iter);
 
     checkUserInterrupt();
   }
 
   // Check keybord interruption to cancel the iteration
-  Rcpp::List Z = model["Z"];     // Z 是一个 list
-  Rcpp::IntegerVector Z0 = Z[0]; // 取第 1 个文档
-  printf("after iteration model Z[0] %d %d %d\n",
-         Z0[0], Z0[1], Z0[2]); // 用 printf 打印
+  // Rcpp::List Z = model["Z"];     // Z 是一个 list
+  // Rcpp::IntegerVector Z0 = Z[0]; // 取第 1 个文档
+  // printf("after iteration model Z[0] %d %d %d\n",
+  //        Z0[0], Z0[1], Z0[2]); // 用 printf 打印
 
-  printf("thinning %d llk_per %d iter_start %d iter %d \n", thinning, llk_per, iter_start, iter);
+  // printf("thinning %d llk_per %d iter_start %d iter %d \n", thinning, llk_per, iter_start, iter);
 
   // Progress bar
   cli_progress_done(progress_bar);

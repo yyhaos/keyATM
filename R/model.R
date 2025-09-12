@@ -1071,8 +1071,8 @@ make_sz_key <- function(W, keywords, info)
   #   auto_unbox = FALSE,
   #   digits = NA
   # )
-  zz <- jsonlite::fromJSON("keyATM_zz_r.json", simplifyVector = FALSE)
-  Z <- lapply(zz$Z, as.integer)
+  # zz <- jsonlite::fromJSON("keyATM_zz_r.json", simplifyVector = FALSE)
+  # Z <- lapply(zz$Z, as.integer)
 
   return(list(S = S, Z = Z))
 }

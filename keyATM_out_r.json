@@ -204,7 +204,18 @@
     "3_Health": ["public", "health"],
     "4_Drug": "drug"
   },
-  "model_fit": {},
+  "model_fit": [
+    {
+      "Iteration": 1,
+      "Log Likelihood": -11706573.1977,
+      "Perplexity": 8790.3839
+    },
+    {
+      "Iteration": 5,
+      "Log Likelihood": -10382265.0231,
+      "Perplexity": 3146.5979
+    }
+  ],
   "pi": [
     {
       "Topic": 1,
@@ -348,7 +359,7 @@
     ]
   },
   "information": {
-    "date_output_made": "2025-09-11 22:02:45",
+    "date_output_made": "2025-09-12 08:15:04",
     "version_keyATM": "0.5.3"
   },
   "kept_values": {
