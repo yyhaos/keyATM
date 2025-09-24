@@ -1,10 +1,10 @@
-laws [✓]	public	world [✓]	states	nation	one	people	every	government	great
-law [✓]	citizens	peace [✓]	constitution [✓]	war [✓]	now	men	time	people	made
-executive [✓]	country	new	union	great	country	life	make	united	within
-policy	congress [✓]	america	power	foreign [✓]	years	know	never	nations	duties
-necessary	interests	freedom [✓]	rights [✓]	future	best	first	just	free	confidence
-given	political	let	state	common	much	man	right	among	high
-business	administration	work	powers	national	even	purpose	long	justice	national
-subject	support	today	whole	good	give	day	president	system	force
-far	present	hope	institutions	way	true	come	still	interest	found
-however	party [✓]	american	duty	better	question	land	strength	federal	since
+public	government	world [✓]	government	states	every	country	great	make	people
+laws [✓]	people	peace [✓]	constitution [✓]	war [✓]	one	made	force	men	justice
+law [✓]	power	new	union	citizens	great	national	office	life	common
+now	congress [✓]	freedom [✓]	country	foreign [✓]	nation	much	federal	free	purpose
+executive [✓]	political	america	rights [✓]	policy	spirit	part	secure	hope	service
+administration	support	let	united	confidence	time	american	less	nations	strength
+present	party [✓]	nation	interests	nations	just	united	important	come	called
+necessary	among	now	state	high	liberty	always	found	need	stand
+interest	prosperity	work	powers	never	well	good	since	good	done
+proper	might	know	principles	within	right	duty	become	things	beyond

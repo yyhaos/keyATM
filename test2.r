@@ -1,7 +1,9 @@
 unloadNamespace("keyATM")
 rm(list = ls())
+library(dplyr)
+
 # use release version
-install.packages("keyATM")
+# install.packages("keyATM")
 library(keyATM)
 # use source code
 # devtools::load_all("./") 
@@ -47,6 +49,16 @@ keywords <- list(
     ForeignAffairs = c("foreign", "war")
 )
 # Run HMM
+# Get meta information (time stamp)
+vars <- docvars(data_corpus_inaugural)
+print(head(vars))
+write.csv(vars, file = "vars.csv", row.names = FALSE)
+# Timestamp should start with 1 (the variable "Period")
+vars %>%
+    as_tibble() %>%
+    mutate(Period = (vars$Year - 1780) %/% 10 + 1) -> vars_period
+vars_period %>% select(Year, Period)
+
 
 options <- {}
 # options$iterations = 5
@@ -54,14 +66,18 @@ options$seed = 122213
 # options$use_cache <- FALSE
 out <- keyATM(
     docs = keyATM_docs,
-    model = "dynamic", no_keyword_topics = 5, keywords = keywords, options = options
+    model = "dynamic", no_keyword_topics = 5, keywords = keywords, options = options, 
+    model_settings = list(
+        time_index = vars_period$Period,
+        num_states = 5
+    ),
 )
 library(jsonlite)
 write_json(out, "keyATM_out_2_r.json", pretty = TRUE, auto_unbox = TRUE)
 topWords <- top_words(out)
 
 writeLines(apply(topWords, 1, paste, collapse = "\t"), "keyATM_topWords_2_r.txt")
-
+print(topWords)
 
 
 # Run Base
@@ -79,3 +95,5 @@ writeLines(apply(topWords, 1, paste, collapse = "\t"), "keyATM_topWords_2_r.txt"
 # topWords <- top_words(out)
 
 # writeLines(apply(topWords, 1, paste, collapse = "\t"), "keyATM_topWords_2_r.txt")
+print(topWords)
+
