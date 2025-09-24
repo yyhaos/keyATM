@@ -96,3 +96,32 @@ print(topWords)
 
 # weightedLDA
 # out2 <- weightedLDA(docs = keyATM_docs, model = "base", number_of_topics = 5)
+print(top_topics(out))
+# A tibble: 140 × 2
+#    Rank1       Rank2
+#    <chr>       <chr>
+#  1 1_Education Other_2
+#  2 Other_3     3_Health
+#  3 Other_2     Other_3
+#  4 Other_3     Other_2
+#  5 1_Education Other_2
+#  6 4_Drug      1_Education
+#  7 3_Health    Other_2
+#  8 Other_5     Other_3
+#  9 Other_5     Other_1
+# 10 Other_1     3_Health
+# # ℹ 130 more rows
+print(top_docs(out))
+#    1_Education 2_Law 3_Health 4_Drug Other_1 Other_2 Other_3 Other_4 Other_5
+# 1           46    90      104     55      10      61      91      50       9
+# 2           60    86      136     12      15      66       2      40     120
+# 3           45    81       99     27      77      97     105      47     117
+# 4          125    24       37    137      19      92      20      88      33
+# 5            5    85      133     87      32      93       4     130      23
+# 6          131    56       21     48      75      14     138      41       8
+# 7            1   115      111     73      39     113     112     108      43
+# 8          103   101       11      6      65     122     121      52      51
+# 9           96    30        7     88     139      22      34     134      58
+# 10          38    89      128     26     126      70      28      29      22
+
+print(plot_modelfit(out))
