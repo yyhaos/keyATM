@@ -25,7 +25,11 @@ keyATM_docs <- keyATM_read(bills_dfm)
 options = {}
 # options$iterations = 5
 options$seed = 12223
-out <- keyATM(docs = keyATM_docs, model = "base", no_keyword_topics = 5, keywords = bills_keywords, options = options)
+options$use_cache = FALSE
+out <- keyATM(
+    docs = keyATM_docs,
+    model = "covariates", no_keyword_topics = 5, keywords = bills_keywords, options = options
+)
 library(jsonlite)
 write_json(out, "keyATM_out_r.json", pretty = TRUE, auto_unbox = TRUE)
 topWords = top_words(out)
@@ -34,6 +38,8 @@ writeLines(apply(topWords, 1, paste, collapse = "\t"), "keyATM_topWords_r.txt")
 
 print(topWords)
 
+cov = covariates_info(out)
+print(cov)
 #      1_Education        2_Law     3_Health      4_Drug      Other_1
 # 1  education [✓]      law [✓]   health [✓]    drug [✓]   management
 # 2         school       action   public [✓]      person     wildlife
