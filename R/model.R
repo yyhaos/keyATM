@@ -824,7 +824,7 @@ check_arg_options <- function(obj, model, info)
                          "iterations", "iter_new", "verbose",
                          "use_weights", "weights_type",
                          "prune", "store_theta", "slice_shape",
-                         "parallel_init", "resume")
+                         "parallel_init", "resume", "use_cache")
 
   # llk_per
   if (is.null(obj$llk_per))
