@@ -103,6 +103,7 @@ keyATM <- function(docs, model, no_keyword_topics,
     if (file.exists("keyATM_fit.rds") && options$use_cache) {
       message("Reading cached RDS model output...")
       fitted <- readRDS("keyATM_fit.rds")
+      fitted$model_settings$covariates_formula <- NULL
       resume <- FALSE
     } else {
       print(paste(

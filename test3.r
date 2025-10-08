@@ -40,8 +40,18 @@ vars %>%
         TRUE ~ "Other"
     )) %>%
     select(Party, Period) -> vars_selected
-table(vars_selected)
+print(table(vars_selected))
 
+vars_selected %>%
+    mutate(
+        Party = factor(Party,
+            levels = c("Other", "Republican", "Democratic")
+        ),
+        Period = factor(Period,
+            levels = c("18_19c", "20_21c")
+        )
+    ) -> vars_selected
+print(head(model.matrix(~ Party + Period, data = vars_selected)))
 
 data_tokens <- tokens(
     data_corpus_inaugural,
@@ -66,10 +76,6 @@ data_dfm <- dfm(data_tokens) %>%
 ncol(data_dfm) # the number of unique words
 
 keyATM_docs <- keyATM_read(texts = data_dfm)
-summary(keyATM_docs)
-
-dfm_mat <- convert(data_dfm, to = "data.frame")
-save(dfm_mat, file = "dfm_mat_2.rda")
 
 keywords <- list(
     Government     = c("laws", "law", "executive"),
@@ -78,35 +84,28 @@ keywords <- list(
     Constitution   = c("constitution", "rights"),
     ForeignAffairs = c("foreign", "war")
 )
-# Run HMM
-# Get meta information (time stamp)
-vars <- docvars(data_corpus_inaugural)
-print(head(vars))
-write.csv(vars, file = "vars.csv", row.names = FALSE)
-# Timestamp should start with 1 (the variable "Period")
-vars %>%
-    as_tibble() %>%
-    mutate(Period = (vars$Year - 1780) %/% 10 + 1) -> vars_period
-vars_period %>% select(Year, Period)
-
-
 options <- {}
 # options$iterations = 5
-options$seed = 122213
-# options$use_cache <- FALSE
+options$seed <- 122213
+options$use_cache <- TRUE
+
 out <- keyATM(
     docs = keyATM_docs,
-    model = "dynamic", no_keyword_topics = 5, keywords = keywords, options = options, 
+    no_keyword_topics = 5,
+    keywords = keywords,
+    model = "covariates",
     model_settings = list(
-        time_index = vars_period$Period,
-        num_states = 5
+        covariates_data = vars_selected,
+        covariates_formula = ~ Party + Period
     ),
+    options = options
 )
+
 library(jsonlite)
-write_json(out, "keyATM_out_2_r.json", pretty = TRUE, auto_unbox = TRUE)
+write_json(out, "keyATM_out_3_r.json", pretty = TRUE, auto_unbox = TRUE)
 topWords <- top_words(out)
 
-writeLines(apply(topWords, 1, paste, collapse = "\t"), "keyATM_topWords_2_r.txt")
+writeLines(apply(topWords, 1, paste, collapse = "\t"), "keyATM_topWords_3_r.txt")
 print(topWords)
 
 
