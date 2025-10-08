@@ -6,22 +6,42 @@ library(dplyr)
 # install.packages("keyATM")
 # library(keyATM)
 # use source code
-devtools::load_all("./") 
+devtools::load_all("./")
 
 library(quanteda)
 
 data(data_corpus_inaugural, package = "quanteda")
+
 data_corpus_inaugural <- head(data_corpus_inaugural, n = 58)
 
-# 转成 data.frame
 df <- data.frame(
     doc_id = docnames(data_corpus_inaugural),
     text = as.character(data_corpus_inaugural),
+    docvars(data_corpus_inaugural), 
     stringsAsFactors = FALSE
 )
 
-# 保存成 CSV
 write.csv(df, "inaugural_58.csv", row.names = FALSE)
+
+vars <- docvars(data_corpus_inaugural)
+head(vars)
+
+# vars
+library(dplyr)
+vars %>%
+    as_tibble() %>%
+    mutate(Period = case_when(
+        Year <= 1899 ~ "18_19c",
+        TRUE ~ "20_21c"
+    )) %>%
+    mutate(Party = case_when(
+        Party == "Democratic" ~ "Democratic",
+        Party == "Republican" ~ "Republican",
+        TRUE ~ "Other"
+    )) %>%
+    select(Party, Period) -> vars_selected
+table(vars_selected)
+
 
 data_tokens <- tokens(
     data_corpus_inaugural,
