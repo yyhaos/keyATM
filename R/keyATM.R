@@ -214,12 +214,26 @@ weightedLDA <- function(docs, model, number_of_topics,
     used_iter <- get_used_iter(fitted, resume, exists = exists_iter)
   } else {
     resume <- FALSE
+
     initialized <- keyATM_initialize(
       docs, model_name, number_of_topics,
       keywords = list(), model_settings = model_settings,
       priors = priors, options = options
     )
-    fitted <- keyATM_fit(initialized)
+    if (isTRUE(options$use_cache) && file.exists("keyATM_fit.rds")) {
+      message("Reading cached RDS model output...")
+      fitted <- readRDS("keyATM_fit.rds")
+      # keep behavior from your cache branch
+      if (!is.null(fitted$model_settings)) {
+        fitted$model_settings$covariates_formula <- NULL
+      }
+      resume <- FALSE
+    } else {
+      fitted <- keyATM_fit(initialized)
+      saveRDS(fitted, "keyATM_fit.rds")
+      resume <- FALSE
+    }
+
     used_iter <- get_used_iter(fitted, resume)
   }
 
