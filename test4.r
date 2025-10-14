@@ -59,7 +59,7 @@ out <- weightedLDA(
     docs              = keyATM_docs, # text input
     number_of_topics  = 5, # number of topics without keywords
     model             = "base", # select the model
-    options           = list(seed = 250)
+    options = options
 )
 
 library(jsonlite)
